@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="FlightDataRecorder.FlightList.View.FlightListPage"
+	xmlns:resx="clr-namespace:FlightDataRecorder;assembly=FlightDataRecorder"
+	xmlns:local="clr-namespace:FlightDataRecorder.FlightList.View;assembly=FlightDataRecorder"
+	Title="{x:Static resx:StringResources.myFlights}">
+
+	<ContentPage.Resources>
+	    <ResourceDictionary>
+	
+			<local:InvertBoolenConverter x:Key="cnvInvert" />
+
+	    </ResourceDictionary>
+    </ContentPage.Resources>
+
+	<ContentPage.ToolbarItems>
+ 		<ToolbarItem Name="Add" Clicked="OnAddClicked" Icon="icon_add.png"/>
+	</ContentPage.ToolbarItems>
+
+	<RelativeLayout
+		BackgroundColor="{StaticResource ListBackgroundColor}">
+	
+		<Label x:Name="emptyListMessage" IsVisible="{Binding IsListVisible, Converter={StaticResource cnvInvert}}"
+			RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+	        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.40}"
+			RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+			XAlign="Center"
+			FontAttributes="Bold"
+			Text="{x:Static resx:StringResources.emptyListMessage}"
+			FontSize="Medium"
+	        TextColor="{StaticResource ItemListTextColor}" />
+
+		<ListView x:Name="listView" 
+			IsVisible="{Binding IsListVisible}"
+			ItemTapped="OnItemSelected"
+			HasUnevenRows="true"
+			ItemsSource="{Binding ItemsSource, Mode=TwoWay}" 
+			RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+	        RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+			RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+			RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+			<ListView.ItemTemplate>
+	   	      	<DataTemplate x:Key="FlightRow">
+		   	      	<local:FlightViewCell>
+					<ViewCell.ContextActions>
+	            	  	<MenuItem Clicked="OnDelete" Icon="icon_delete.png" Text="{x:Static resx:StringResources.delete}" CommandParameter="{Binding .}" IsDestructive="true" />
+         		  	</ViewCell.ContextActions>		   	      	 
+		   	      	<StackLayout Padding="10, 10, 10, 0">
+			          	<Grid Padding="10, 5, 10, 5" BackgroundColor="{StaticResource ItemListBackgroundColor}">
+					       	<Grid.ColumnDefinitions>
+					       		<ColumnDefinition Width="Auto" />
+					       		<ColumnDefinition Width="*"/>
+					       		<ColumnDefinition Width="Auto"/>
+					     	</Grid.ColumnDefinitions>
+			              	<local:IcoMoonLabel Grid.Column="0" Text="{x:Static resx:StringResources.iconPlane}" TextColor="{StaticResource ItemListTextColor}" 
+			              		VerticalOptions="FillAndExpand" HorizontalOptions="Center" FontSize="Small" YAlign="Center" />
+			              	<StackLayout Grid.Column="1" Orientation="Vertical" >
+				              	<StackLayout Orientation="Horizontal" >
+			                  		<Label Text="{Binding Info.Operator, Mode=TwoWay}" YAlign="Center" HorizontalOptions="Start" 
+			                  			FontSize="Small" FontAttributes="Bold" TextColor="{StaticResource ItemListTextColor}" />
+			                  		<Label Text="{Binding Info.Number, Mode=TwoWay}" YAlign="Center" HorizontalOptions="Start" 
+			                  			FontSize="Small" FontAttributes="Bold" TextColor="{StaticResource ItemListTextColor}" />
+			                  	</StackLayout>
+				              	<StackLayout Orientation="Horizontal" >
+			                  		<Label Text="{Binding Info.DepartureCode, Mode=TwoWay}" YAlign="Center" HorizontalOptions="Start" 
+			                  			FontSize="Small" TextColor="{StaticResource ItemListTextColor}" />
+			                  		<Label Text="-" YAlign="Center" HorizontalOptions="Start" 
+			                  			FontSize="Small" TextColor="{StaticResource ItemListTextColor}" />
+			                  		<Label Text="{Binding Info.DestinationCode, Mode=TwoWay}" YAlign="Center" HorizontalOptions="Start" 
+			                  			FontSize="Small" TextColor="{StaticResource ItemListTextColor}" />
+			                  	</StackLayout>
+				              	<StackLayout Orientation="Horizontal" >
+			                  		<Label Text="{Binding Info.CreationDate, Mode=TwoWay}" YAlign="Center" HorizontalOptions="Start" 
+			                  			FontSize="Micro" TextColor="{StaticResource ItemListTextColor}" />
+			                  		<Label Text="{Binding Info.AircraftRegistration, Mode=TwoWay}" YAlign="Center" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" 
+			                  			FontSize="Micro" TextColor="{StaticResource ItemListTextColor}" />
+			                  	</StackLayout>
+		                  	</StackLayout>
+							<local:IcoMoonLabel x:Name="recordingStateIcon" Grid.Column="2"
+								VerticalOptions="Center" HorizontalOptions="End" FontSize="Small" />
+			          	</Grid>
+		   	      	</StackLayout>
+		          	</local:FlightViewCell>
+	 	  	  	</DataTemplate> 
+			</ListView.ItemTemplate>
+		</ListView>			
+
+	</RelativeLayout>
+
+</ContentPage>

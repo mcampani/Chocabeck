@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+
+	<!-- FlightListPage-->
+	<data name="myFlights" xml:space="preserve">
+	    <value>My Flights</value>
+	</data>
+	<data name="emptyListMessage" xml:space="preserve">
+	    <value>Tap on + to create a new flight</value>
+	</data>
+	<data name="iconPlane" xml:space="preserve">
+	    <value>&#xe9af;</value>
+	</data>
+	<data name="iconRecording" xml:space="preserve">
+	    <value>&#xea54;</value>
+	</data>
+	<data name="iconProcessed" xml:space="preserve">
+	    <value>&#xea10;</value>
+	</data>
+	<data name="delete" xml:space="preserve">
+	    <value>Delete</value>
+	</data>
+	<data name="errorDeleting" xml:space="preserve">
+	    <value>The recording must be stopped before a deletion</value>
+	</data>
+
+	<!-- FlightAddPage-->
+	<data name="newFlight" xml:space="preserve">
+	    <value>New Flight</value>
+	</data>
+	<data name="departureCode" xml:space="preserve">
+	    <value>Departure IATA Code</value>
+	</data>
+	<data name="destinationCode" xml:space="preserve">
+	    <value>Destination IATA Code</value>
+	</data>
+	<data name="flightNumber" xml:space="preserve">
+	    <value>Flight Number</value>
+	</data>
+	<data name="flightOperator" xml:space="preserve">
+	    <value>Operator</value>
+	</data>
+	<data name="aircraftRegistration" xml:space="preserve">
+	    <value>Aircraft Registration</value>
+	</data>
+	<data name="newFlight" xml:space="preserve">
+	    <value>New Flight</value>
+	</data>
+	<data name="recordingFrequency" xml:space="preserve">
+	    <value>Recording Frequency</value>
+	</data>
+	<data name="error" xml:space="preserve">
+	    <value>Error</value>
+	</data>
+	<data name="error_mandatory_values" xml:space="preserve">
+	    <value>All the values are mandatory</value>
+	</data>
+	<data name="ok" xml:space="preserve">
+	    <value>Ok</value>
+	</data>
+
+	<!-- FlightRecordPage-->
+	<data name="recordingFlight" xml:space="preserve">
+	    <value>Flight %</value>
+	</data>
+	<data name="latitude" xml:space="preserve">
+	    <value>GPS Latitude</value>
+	</data>
+	<data name="longitude" xml:space="preserve">
+	    <value>GPS Longitude</value>
+	</data>
+	<data name="startRecording" xml:space="preserve">
+	    <value>Start Recording</value>
+	</data>
+	<data name="stopRecording" xml:space="preserve">
+	    <value>Stop Recording</value>
+	</data>
+	<data name="errorGps" xml:space="preserve">
+	    <value>The GPS Provider does not exist or is not enabled</value>
+	</data>
+
+</root>

@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="FlightDataRecorder.FlightAdd.View.FlightAddPage"
+	xmlns:resx="clr-namespace:FlightDataRecorder;assembly=FlightDataRecorder"
+	xmlns:local="clr-namespace:FlightDataRecorder.FlightAdd.View;assembly=FlightDataRecorder"
+	Title="{x:Static resx:StringResources.newFlight}">
+	<ContentPage.Resources>
+	    <ResourceDictionary>
+	    	<Style x:Key="GridPadding" TargetType="Grid">
+	    		<Setter Property="Padding">
+					<Setter.Value>
+						<OnPlatform x:TypeArguments="Thickness">
+					      <OnPlatform.iOS>
+					       	8, 20, 8, 10
+					      </OnPlatform.iOS>
+					      <OnPlatform.Android>
+					       	10, 20, 10, 10
+					      </OnPlatform.Android>
+					      <OnPlatform.WinPhone>
+					        10, 20, 10, 10
+					      </OnPlatform.WinPhone>
+					    </OnPlatform>
+					</Setter.Value>
+	    		</Setter>
+	    	</Style>
+
+	    	<local:StringToIntConverter x:Key="intConverter" />
+
+	    </ResourceDictionary>
+	</ContentPage.Resources>
+
+	<ContentPage.Content>
+
+		<RelativeLayout BackgroundColor="{StaticResource ListBackgroundColor}">
+			<RelativeLayout >	
+				<Grid Style="{StaticResource GridPadding}" RowSpacing="10"
+					RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+					RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.90}">
+	      			<Grid.RowDefinitions>
+		        		<RowDefinition Height="Auto" />
+		        		<RowDefinition Height="Auto" />
+		        		<RowDefinition Height="Auto" />
+		        		<RowDefinition Height="Auto" />
+		        		<RowDefinition Height="Auto" />
+		        		<RowDefinition Height="Auto" />
+			    	</Grid.RowDefinitions>
+			    	<Entry Grid.Row="0" Text="{Binding Flight.Info.DepartureCode, Mode=TwoWay}" Placeholder="{x:Static resx:StringResources.departureCode}" BackgroundColor="{StaticResource ItemListBackgroundColor}" TextColor="{StaticResource ItemListTextColor}"/>
+					<Entry Grid.Row="1" Text="{Binding Flight.Info.DestinationCode, Mode=TwoWay}" Placeholder="{x:Static resx:StringResources.destinationCode}" BackgroundColor="{StaticResource ItemListBackgroundColor}" TextColor="{StaticResource ItemListTextColor}"/>
+					<Entry Grid.Row="2" Text="{Binding Flight.Info.Number, Mode=TwoWay}" Placeholder="{x:Static resx:StringResources.flightNumber}" BackgroundColor="{StaticResource ItemListBackgroundColor}" TextColor="{StaticResource ItemListTextColor}"/>
+					<Entry Grid.Row="3" Text="{Binding Flight.Info.AircraftRegistration, Mode=TwoWay}" Placeholder="{x:Static resx:StringResources.aircraftRegistration}" BackgroundColor="{StaticResource ItemListBackgroundColor}" TextColor="{StaticResource ItemListTextColor}"/>
+					<Entry Grid.Row="4" Text="{Binding Flight.Info.Operator, Mode=TwoWay}" Placeholder="{x:Static resx:StringResources.flightOperator}" BackgroundColor="{StaticResource ItemListBackgroundColor}" TextColor="{StaticResource ItemListTextColor}"/>
+
+					<local:BindablePicker x:Name="frequencyPicker" Grid.Row="5" Title="{x:Static resx:StringResources.recordingFrequency}" BackgroundColor="{StaticResource ItemListBackgroundColor}" SelectedItem="{Binding Flight.Data.Frequency, Converter={StaticResource intConverter}, Mode=TwoWay}">
+						<local:BindablePicker.Items>
+            				<x:String></x:String> 
+            				<x:String>1</x:String> 
+            				<x:String>10</x:String>
+            				<x:String>30</x:String>
+            				<x:String>60</x:String>
+            				<x:String>300</x:String>
+        				</local:BindablePicker.Items>
+					</local:BindablePicker>
+		  		</Grid>
+	
+		  		<StackLayout 
+					RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+			        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.90}"
+					RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+					RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.10}" >
+	        		
+					<Button Text="Save" TextColor="{StaticResource BarTextColor}" Clicked="OnSaveClicked"
+		           		FontSize="Medium" BackgroundColor="{StaticResource BarBackgroundColor}" HorizontalOptions="CenterAndExpand" />
+
+	            </StackLayout>
+			</RelativeLayout>
+
+		</RelativeLayout>
+			
+	</ContentPage.Content>
+</ContentPage>
