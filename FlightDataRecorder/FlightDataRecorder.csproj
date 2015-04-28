@@ -46,7 +46,6 @@
     <Compile Include="FlightList\ViewModel\FlightListViewModel.cs" />
     <Compile Include="FlightRecord\Model\FlightData.cs" />
     <Compile Include="FlightRecord\Model\IDataService.cs" />
-    <Compile Include="Localization\StringResources.Designer.cs" />
     <Compile Include="Resources\ResourceManager.cs" />
     <Compile Include="FlightAdd\View\FlightAddPage.xaml.cs">
       <DependentUpon>FlightAddPage.xaml</DependentUpon>
@@ -56,6 +55,9 @@
     </Compile>
     <Compile Include="FlightRecord\View\FlightRecordPage.xaml.cs">
       <DependentUpon>FlightRecordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\StringResources.Designer.cs">
+      <DependentUpon>StringResources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
@@ -77,7 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Localization\StringResources.resx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database\" />
@@ -96,6 +97,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FlightRecord\View\FlightRecordPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\StringResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 </Project>
